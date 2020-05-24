@@ -90,10 +90,28 @@ function App() {
         timeout={2000}
         unmountOnExit>
         <div className="absolute-pos">
-          <Button onClick={reset}> Start Over</Button>
-            <CountryCard code={code} countryName={countryName} />
-            <ComicCard comic={comic} />
-            <CookieCard cookie={cookie} />
+          <div style={{display:"flex", flexDirection:"column", height:"100%", width:"100%", flex:"0 1 auto"}}>
+            <div style={{display:"flex", width:'100%'}}>
+              <div style={{flex:1}}>
+                <div style={{float:'left', padding:'10px'}}>
+                <Button onClick={reset}> Start Over</Button>
+                </div>
+              </div>
+            <div style={{textAlign:"center", margin:'auto', flex:1}}>
+              <Header>Name.space</Header>
+            </div>
+            <div style={{flex:1}}></div>
+            </div>
+          
+          <div style={{display:"flex", width:'100%', height:'100%', flex:"1 1 auto"}}>
+            <div style={{flex:1, height:'100%'}}>
+              <CountryCard style={{height:'50%'}} code={code} countryName={countryName} />
+              <CookieCard style={{height:'50%'}} cookie={cookie} />
+            </div>
+            <ComicCard style={{flex:1}} comic={comic} />
+            
+          </div>
+          </div>
           </div>
         </CSSTransition>
       </div>

@@ -4,7 +4,8 @@ import {Card, Image, Header} from 'semantic-ui-react';
 export default function App(props) {
 
 return(
-    <Card>
+    <div style={{...props.style, padding:'10px'}}>
+    <Card style={{height:'100%', width:'100%'}}>
         <Card.Content>
         <Header>
               XKCD #{props.comic.num}
@@ -13,5 +14,6 @@ return(
             {props.comic.alt}
         </Card.Content>
     </Card>
+    </div>
 )
 }
