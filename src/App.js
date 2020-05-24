@@ -82,7 +82,7 @@ function App() {
         timeout={2000}>
         <div className="centered">
           <div className="title">
-            ABBABHABA.io
+            Identifi
             </div>
           <div class="ui action input">
             <Input placeholder="Enter your name..." onChange={update}
@@ -114,7 +114,7 @@ function App() {
                 </div>
               </div>
             <div style={{textAlign:"center", margin:'auto', flex:1}}>
-              <Header>Name.space</Header>
+              <Header>Identifi</Header>
             </div>
             <div style={{flex:1}}></div>
             </div>
