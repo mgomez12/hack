@@ -19,14 +19,17 @@ function App() {
     setName(data.value)
   }
 
+  const enableScroll = () => {
+    document.body.classList.remove("no-scroll")
+    document.body.classList.add('scroll');
+  }
+
+  const disableScroll = () => {
+    document.body.classList.add('no-scroll');
+    document.body.classList.remove("scroll")
+  }
   const reset = () => {
-    // setName("");
     setReady(false);
-    // setCode("");
-    // setError(false);
-    // setComic("");
-    // setCountryName("");
-    // setCookie(null);
   }
 
   function hashString(str) {
@@ -79,6 +82,7 @@ function App() {
         unmountOnExit
         in={!ready}
         classNames="title"
+        onEnter={disableScroll}
         timeout={2000}>
         <div className="centered">
           <div className="title">
@@ -104,6 +108,7 @@ function App() {
         in={ready}
         classNames="result"
         timeout={2000}
+        onEntered={enableScroll}
         unmountOnExit>
         <div className="absolute-pos">
           <div style={{display:"flex", flexDirection:"column", height:"100%", width:"100%", flex:"0 1 auto"}}>
