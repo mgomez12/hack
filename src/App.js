@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import {Input, Button, Image, Header} from 'semantic-ui-react';
-import {CSSTransition} from 'react-transition-group';
+import React, { useState, useEffect } from 'react';
+import { Input, Button, Image, Header } from 'semantic-ui-react';
+import { CSSTransition } from 'react-transition-group';
 import CountryCard from './CountryCard';
 import ComicCard from './ComicCard';
 import CookieCard from './CookieCard';
@@ -79,8 +79,18 @@ function App() {
             ABBABHABA.io
             </div>
           <div class="ui action input">
-            <Input opacity=".6" placeholder="Enter your name..." onChange={update} />
-            <button opacity=".6" class="ui button" disabled={name === ""} onClick={getData} >Submit!</button>
+            <Input placeholder="Enter your name..." onChange={update}
+              style={{
+                fontFamily: "Segoe UI",
+                opacity: 0.8,
+              }} />
+            <button class="ui button" disabled={name === ""} onClick={getData}
+              style={{
+                fontFamily: "Segoe UI",
+                opacity: 0.8,
+              }} >
+              Submit!
+          </button>
           </div>
         </div>
       </CSSTransition>

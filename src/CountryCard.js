@@ -7,7 +7,7 @@ return(
     <div style={{...props.style, padding:'10px'}}>
     <Card style={{height:'100%', width:'100%'}}>
         <Card.Content>
-        <Image src={`https://www.countryflags.io/${props.code.toLowerCase()}/shiny/64.png`} />
+        <Image src={`https://www.countryflags.io/${props.code.toLowerCase()}/flat/64.png`} />
         {props.countryName}
         </Card.Content>
     </Card>
