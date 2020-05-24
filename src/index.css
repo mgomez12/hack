@@ -6,7 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image:url("/images/cool-background.jpg") !important;
+  background-image:url("https://images.unsplash.com/photo-1545098885-470a2f1c36e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80") !important;
   background-size:cover !important;
 }
 
@@ -21,8 +21,8 @@ body, html {
 }
 
 .title {
-  font-size:50px;
-  font-family:"Lucida Sans Unicode", sans-serif;
+  font-size:36px;
+  font-family:"Consolas", sans-serif;
   margin:30px;
 }
 
