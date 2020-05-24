@@ -18,14 +18,15 @@ code {
 body, html {
   height:100%;
   margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  font-size:18px;
+  font-family: "Segoe UI", sans-serif !important;
+  font-size:24px;
 }
 
 .title {
   font-size:36px;
-  font-family:"Segoe UI", sans-serif;
+  font-family:"Segoe UI", sans-serif !important;
   margin:30px;
+  color: white;
 }
 
 .centered {
@@ -85,16 +86,20 @@ body, html {
 }
 
 
-.ui.card,
-.ui.cards>.card> {
-  background-color: rgba(110, 110, 110, 0) !important;
-  
+.ui.card{
+ background-color: rgba(110, 110, 110, 0) !important;
+
 }
 
 .ui.card>.content,
 .ui.cards>.card>.content {
-  background-color: rgba(110, 110, 110, 1) !important;
-  
+  background-color: rgba(110, 110, 110, .9) !important;
+  color:white;
+}
+
+.ui.card>.header,
+.ui.cards>.card>.header {
+  color:white !important;
 }
 
 .ui.card>.content>a.header,
@@ -105,5 +110,5 @@ body, html {
 .ui.cards>.card>.content>.description,
 .ui.card>.extra a:not(.ui),
 .ui.cards>.card>.extra a:not(.ui) {
-  color: black;
+  color: white;
 }
