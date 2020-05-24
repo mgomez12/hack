@@ -38,7 +38,7 @@ function App() {
         <Button style={{margin:'10px'}} basic color='violet' disabled={name===""} onClick={getData}>
           Submit!
           </Button>
-        {error ? <div>You suck</div> : ''}
+        {error ? <div>You have a fucking stupid name</div> : ''}
         </div>
       :
       <Image src={`https://www.countryflags.io/${code.toLowerCase()}/shiny/64.png`} />
