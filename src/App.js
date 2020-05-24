@@ -6,6 +6,7 @@ function App() {
   const [name, setName] = useState("");
   const [ready, setReady] = useState(false);
   const [code, setCode] = useState("");
+  const [error, setError] = useState(false);
 
   const update = (event, data) => {
     setName(data.value)
@@ -15,9 +16,14 @@ function App() {
   const getData = () => {
     fetch("https://api.nationalize.io?name=" + name).then((data) => data.json())
     .then(data => {
-      console.log(data.country);
-      setCode(data.country[0].country_id)
-      setReady(true);
+      console.log(data);
+      if (data.country.length === 0) {
+        setError(true);
+      }
+      else {
+        setCode(data.country[0].country_id)
+        setReady(true);
+      }
     })
   }
     return (
@@ -32,6 +38,7 @@ function App() {
         <Button style={{margin:'10px'}} basic color='violet' disabled={name===""} onClick={getData}>
           Submit!
           </Button>
+        {error ? <div>You suck</div> : ''}
         </div>
       :
       <Image src={`https://www.countryflags.io/${code.toLowerCase()}/shiny/64.png`} />
