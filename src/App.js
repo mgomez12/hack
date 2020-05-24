@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Input, Button, Image} from 'semantic-ui-react';
+import {Input, Button, Image, Header} from 'semantic-ui-react';
 import './App.css';
 
 function App() {
@@ -20,6 +20,7 @@ function App() {
       hash += Math.pow(str.charCodeAt(i) * 31, str.length - i);
       hash = hash & hash;
     }
+    return Math.abs(hash);
   }
 
   const getData = () => {
@@ -31,21 +32,20 @@ function App() {
       }
       else {
         setCode(data.country[0].country_id)
-        //setReady(true);
       }
     })
 
-    const headers = {"Access-Control-Allow-Origin" : "*"}
-
-    const promise2 = fetch("https://xkcd.com/info.0.json", {headers : headers}).then((data) => data.json())
+    const promise2 = fetch("https://xkcd.now.sh/?comic=latest").then((data) => data.json())
     .then(data => {
+      console.log(data.num);
+      console.log(hashString(name));
       const id = hashString(name) % data.num;
-      fetch(`https://xkcd.com/${id}/info.0.json`, {headers : headers}).then((data) => data.json())
+      fetch(`https://xkcd.now.sh/?comic=${id}`).then((data) => data.json())
       .then(data => {
         setComicURL(data);
       })
     });
-    Promise.all([promise1, promise2]).then(() => setReady)
+    Promise.all([promise1, promise2]).then(() => setReady(true))
   }
     return (
       <div className="App">
@@ -64,7 +64,11 @@ function App() {
       :
       <React.Fragment>
       <Image src={`https://www.countryflags.io/${code.toLowerCase()}/shiny/64.png`} />
-      <Image src={`${comicURL}`} />
+      <Header>
+        XKCD #{comicURL.num}
+      </Header>
+      <Image src={`${comicURL.img}`} />
+      {comicURL.alt}
       </React.Fragment>
         }
       </div>
