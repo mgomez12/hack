@@ -88,14 +88,15 @@ body, html {
 
 
 .ui.card{
- background-color: rgba(110, 110, 110, 0) !important;
+ background-color: rgba(110, 110, 110, .9) !important;
 
 }
 
 .ui.card>.content,
 .ui.cards>.card>.content {
-  background-color: rgba(110, 110, 110, .9) !important;
+  background-color: rgba(110, 110, 110, 0) !important;
   color:white;
+  font-size: 14px !important;
 }
 
 .ui.header{
@@ -117,4 +118,12 @@ body, html {
   margin: 25px;
   color: white;
   font-size: 48px;
+}
+
+.ui.large.header {
+  font-size: 24px !important; 
+}
+
+.ui.medium.header {
+  font-size: 18px !important;
 }

@@ -114,7 +114,7 @@ function App() {
                 </div>
               </div>
             <div style={{textAlign:"center", margin:'auto', flex:1}}>
-              <Header>Identifi</Header>
+              <Header style={{fontSize:"30px"}}>Identifi</Header>
             </div>
             <div style={{flex:1}}></div>
             </div>
