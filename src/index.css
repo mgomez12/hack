@@ -127,3 +127,11 @@ body, html {
 .ui.medium.header {
   font-size: 18px !important;
 }
+
+.ui.button {
+  font-size:14px !important;
+}
+
+.input {
+  font-size:14px !important;
+}
