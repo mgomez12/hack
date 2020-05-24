@@ -54,7 +54,7 @@ function App() {
         }
       })
 
-    const promise3 = fetch("http://fortunecookieapi.herokuapp.com/v1/cookie")
+    const promise3 = fetch("https://fortunecookieapi.herokuapp.com/v1/cookie")
       .then(data => data.json())
       .then(data => {
         console.log(data);
