@@ -16,6 +16,15 @@ function App() {
     setName(data.value)
   }
 
+  const reset = () => {
+    // setName("");
+    setReady(false);
+    // setCode("");
+    // setError(false);
+    // setComicURL("");
+    // setCountryName("");
+    // setCookie(null);
+  }
 
   function hashString(str){
     let hash = 0;
@@ -31,7 +40,7 @@ function App() {
     .then(data => {
       console.log(data);
       if (data.country.length == 0) {
-        setError(true);
+        return Promise.reject();
       }
       else {
         setCode(data.country[0].country_id)
@@ -59,14 +68,14 @@ function App() {
         setComicURL(data);
       })
     });
-    Promise.all([promise1, promise2, promise3]).then(() => setReady(true))
+    Promise.all([promise1, promise2, promise3]).then(() => setReady(true), () => setError(true));
   }
     return (
       <div className="App">
         <CSSTransition
           unmountOnExit
           in={!ready}
-          classNames="my-node"
+          classNames="title"
           timeout={2000}>
           <div className="centered">
             <div className="title">
@@ -82,25 +91,27 @@ function App() {
         </CSSTransition>
         <CSSTransition
           in={ready}
-          classNames="my-node"
+          classNames="result"
           timeout={2000}
           unmountOnExit>
-        <div>
-        <Image src={`https://www.countryflags.io/${code.toLowerCase()}/shiny/64.png`} />
-        {countryName}
-        <Header>
-          XKCD #{comicURL.num}
-        </Header>
-        <Image src={`${comicURL.img}`} />
-        {comicURL.alt}
-        <Header>Fortune Cookie</Header>
-        Fortune: {cookie === null ? '' : cookie.fortune.message}
-        <br/>
-        Lotto: {cookie === null ? '' : cookie.lotto.numbers.map((num) => num + ', ')}
-        <br/>
-        Lesson: {cookie === null ? '' : cookie.lesson.translation}
-        </div>
-      </CSSTransition>
+            <div className="absolute-pos">
+          <Button onClick={reset}> Start Over</Button>
+          
+            <Image src={`https://www.countryflags.io/${code.toLowerCase()}/shiny/64.png`} />
+            {countryName}
+            <Header>
+              XKCD #{comicURL.num}
+            </Header>
+            <Image src={`${comicURL.img}`} />
+            {comicURL.alt}
+            <Header>Fortune Cookie</Header>
+            Fortune: {cookie === null ? '' : cookie.fortune.message}
+            <br/>
+            Lotto: {cookie === null ? '' : cookie.lotto.numbers.map((num) => num + ', ')}
+            <br/>
+            Lesson: {cookie === null ? '' : cookie.lesson.translation}
+          </div>
+        </CSSTransition>
       </div>
     );
 }
