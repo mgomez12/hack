@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {Input, Button, Image, Header} from 'semantic-ui-react';
 import {CSSTransition} from 'react-transition-group';
+import CountryCard from './CountryCard';
+import ComicCard from './ComicCard';
+import CookieCard from './CookieCard';
 import './App.css';
 
 function App() {
@@ -8,7 +11,7 @@ function App() {
   const [ready, setReady] = useState(false);
   const [code, setCode] = useState("");
   const [error, setError] = useState(false);
-  const [comicURL, setComicURL] = useState("");
+  const [comic, setComic] = useState("");
   const [countryName, setCountryName] = useState("")
   const [cookie, setCookie] = useState(null);
 
@@ -21,7 +24,7 @@ function App() {
     setReady(false);
     // setCode("");
     // setError(false);
-    // setComicURL("");
+    // setComic("");
     // setCountryName("");
     // setCookie(null);
   }
@@ -65,7 +68,7 @@ function App() {
       const id = hashString(name) % data.num;
       fetch(`https://xkcd.now.sh/?comic=${id}`).then((data) => data.json())
       .then(data => {
-        setComicURL(data);
+        setComic(data);
       })
     });
     Promise.all([promise1, promise2, promise3]).then(() => setReady(true), () => setError(true));
@@ -97,19 +100,9 @@ function App() {
             <div className="absolute-pos">
           <Button onClick={reset}> Start Over</Button>
           
-            <Image src={`https://www.countryflags.io/${code.toLowerCase()}/shiny/64.png`} />
-            {countryName}
-            <Header>
-              XKCD #{comicURL.num}
-            </Header>
-            <Image src={`${comicURL.img}`} />
-            {comicURL.alt}
-            <Header>Fortune Cookie</Header>
-            Fortune: {cookie === null ? '' : cookie.fortune.message}
-            <br/>
-            Lotto: {cookie === null ? '' : cookie.lotto.numbers.map((num) => num + ', ')}
-            <br/>
-            Lesson: {cookie === null ? '' : cookie.lesson.translation}
+            <CountryCard code={code} countryName={countryName} />
+            <ComicCard comic={comic} />
+            <CookieCard cookie={cookie} />
           </div>
         </CSSTransition>
       </div>
