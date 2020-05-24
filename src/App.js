@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Input, Button, Image, Header } from 'semantic-ui-react';
+import { Input, Button, Image, Header, SearchCategory } from 'semantic-ui-react';
 import { CSSTransition } from 'react-transition-group';
 import CountryCard from './CountryCard';
 import ComicCard from './ComicCard';
@@ -14,6 +14,10 @@ function App() {
   const [comic, setComic] = useState("");
   const [countryName, setCountryName] = useState("")
   const [cookie, setCookie] = useState(null);
+
+  useEffect(() => {
+    document.body.classList.add('no-scroll');
+  })
 
   const update = (event, data) => {
     setName(data.value)
@@ -42,6 +46,7 @@ function App() {
   }
 
   const getData = () => {
+    setError(false);
     const promise1 = fetch("https://api.nationalize.io?name=" + name).then((data) => data.json())
       .then(data => {
         console.log(data);
@@ -102,6 +107,8 @@ function App() {
               Submit!
           </button>
           </div>
+          <br/>
+          {error? "Sorry, we couldn't find that name!" : ""}
         </div>
       </CSSTransition>
       <CSSTransition
