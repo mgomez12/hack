@@ -119,7 +119,7 @@ function App() {
             <div style={{flex:1}}></div>
             </div>
           
-          <div style={{display:"flex", width:'100%', height:'100%', flex:"1 1 auto"}}>
+          <div style={{display:"flex", width:'100%', flex:"1 1 auto"}}>
             <div style={{flex:1, height:'100%'}}>
               <CountryCard style={{height:'50%'}} code={code} countryName={countryName} />
               <CookieCard style={{height:'50%'}} cookie={cookie} />
