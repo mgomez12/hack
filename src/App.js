@@ -61,9 +61,15 @@ function App() {
         setCookie(data[0]);
       });
 
-    const promise2 = fetch("https://xkcd.now.sh/?comic=latest").then((data) => data.json())
+      const promise2 = fetch("https://xkcd.now.sh/?comic=latest").then((data) => data.json())
       .then(data => {
-        setComic(data);
+        console.log(data.num);
+        console.log(hashString(name));
+        const id = hashString(name) % data.num;
+        fetch(`https://xkcd.now.sh/?comic=${id}`).then((data) => data.json())
+        .then(data => {
+          setComic(data);
+        })
       });
     Promise.all([promise1, promise2, promise3]).then(() => setReady(true), () => setError(true));
   }
