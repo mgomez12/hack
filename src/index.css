@@ -30,10 +30,11 @@ body, html {
 }
 
 .centered {
-  margin:0;
   position: absolute;
   top:50%;
   left:50%;
+  width:90%;
+  padding: auto;
   -ms-transform: translateY(-50%) translateX(-50%);
   transform: translateY(-50%) translateX(-50%);
 }
@@ -97,8 +98,7 @@ body, html {
   color:white;
 }
 
-.ui.card>.header,
-.ui.cards>.card>.header {
+.ui.header{
   color:white !important;
 }
 
@@ -111,4 +111,10 @@ body, html {
 .ui.card>.extra a:not(.ui),
 .ui.cards>.card>.extra a:not(.ui) {
   color: white;
+}
+
+.card-title {
+  margin: 25px;
+  color: white;
+  font-size: 48px;
 }

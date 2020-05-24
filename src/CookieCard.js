@@ -3,17 +3,23 @@ import {Card, Header} from 'semantic-ui-react';
 
 export default function App(props) {
 
+    const numsToString = () => {
+        let s = '';
+        props.cookie.lotto.numbers.map((num) => s = s.concat(num.toString() + ', '));
+        console.log(s);
+        return s.substring(0,s.length-2);
+    }
 return(
     <div style={{...props.style, padding:'10px'}}>
     <Card style={{height:'100%', width:'100%'}}>
         <Card.Content>
-        <Header>Fortune Cookie</Header>
-            Fortune: {props.cookie === null ? '' : props.cookie.fortune.message}
+        <div className="card-title">Fortune Cookie</div>
+            <Header size="large" style={{float:'left', margin:'20px'}}>Your Fortune:  {props.cookie === null ? '' : props.cookie.fortune.message}
+            </Header>
             <br/>
-            Lotto: {props.cookie === null ? '' : props.cookie.lotto.numbers.map((num) => num + ', ')}
-            <br/>
-            Lesson: {props.cookie === null ? '' : props.cookie.lesson.translation}
-        </Card.Content>
+            <Header size="large" style={{float:'left', margin:'20px'}}>Your Lotto #'s:  {props.cookie === null ? '' : numsToString()}
+            </Header>
+            </Card.Content>
     </Card>
     </div>
 )
